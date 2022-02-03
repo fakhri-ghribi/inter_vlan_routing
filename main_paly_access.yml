@@ -1,6 +1,6 @@
 ---
 - name: Configure intervlan routing and deploy OSPF
-  hosts: dist
+  hosts: access
   connection: local
   gather_facts: no
   tasks:
@@ -10,15 +10,10 @@
         vlan_id: "{{item.id}}"
         name: "{{item.desc}}"
         state: present
-    - name: Set VLANS IPs
-      with_items: "{{vlans}}"
-      ios_l3_interface:
-        name: "{{item.id}}"
-        ipv4: "{{item.ip_address}}"
-        state: present
-    - name: Generate config file cfg for distribution switchs
-      template: src=files/deploy_inter_vlan_dist.j2 dest={{inventory_hostname}}.cfg
+    - name: Generate config file cfg for access switchs
+      template: src=files/deploy_vlans_access.j2 dest={{inventory_hostname}}.cfg
     - name: Deploy inter_vlan routing
       ios_config:
         src: "{{inventory_hostname}}.cfg"
+    
       
