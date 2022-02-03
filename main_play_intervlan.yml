@@ -10,7 +10,6 @@
         vlan_id: "{{item.id}}"
         name: "{{item.desc}}"
         state: present
-        enabled: True
     - name: Set VLANS IPs
       delegate_to: dist
       with_items: "{{vlans}}"
