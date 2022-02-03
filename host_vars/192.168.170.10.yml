@@ -1,0 +1,36 @@
+---
+
+vlans:
+  - id: 10
+    desc: VLAN-10
+    ip_address: 10.0.10.0/24
+  - id: 20
+    desc: VLAN-20
+    ip_address: 10.0.20.0/24
+  - id: e0/1
+    ip_address: 10.0.0.1/24
+interfaces_trunk:
+  - name: e0/2
+    desc: interfaces vers access switchs
+    mode: trunk
+    allowed_vlans: 
+      - id: 10 
+      - id: 20
+  - name: e0/3
+    desc: interfaces vers access switchs
+    mode: trunk
+    allowed_vlans: 
+      - id: 10 
+      - id: 20
+net_ospf:
+  - net: 10.0.10.0
+    wildcard: 0.0.0.255
+  - net: 10.0.20.0
+    wildcard: 0.0.0.255
+  - net: 10.0.0.0
+    wildcard: 0.0.0.255
+
+ospf_process: 1
+router_id: 1.1.1.1
+ospf_area: 0
+    

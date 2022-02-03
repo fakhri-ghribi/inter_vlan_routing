@@ -1,0 +1,23 @@
+{# {% for v in vlans %}
+  vlan {{v['id']}}
+    name {{v['desc']}}
+  interface vlan {{v['id']}}
+    ip address {{v['ip_address']}}
+ {% endfor %} #}
+#}
+{% for int in interfaces_trunk %}
+  interface {{int['name']}}
+    description {{in['desc']}}
+    switchport mode {{int['mode']}}
+    {% for vl in int['allowed_vlans'] %}
+      switchport trunk allowed vlan add {{vl['id']}}
+    {% endfor %}
+!
+{% endfor %}
+
+ip routing
+router ospf {{ospf_process}}
+  router-id {{router_id}}
+  {% for net in net_ospf %}
+    network {{net['net']}} {{net['wildcard']}} area {{ospf_area}}
+    

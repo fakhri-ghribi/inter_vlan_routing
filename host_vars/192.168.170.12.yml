@@ -1,0 +1,21 @@
+---
+
+vlans:
+  - id: 10
+    desc: VLAN-10
+  - id: 20
+    desc: VLAN-20
+
+interfaces:
+  - name: e0/2
+    mode: trunk
+    allowed_vlans: 
+      - id: 10  
+      - id: 20
+  - name: e0/4
+    mode: access
+    allowed_vlans: 10
+  - name: e0/5
+    mode: access
+    allowed_vlans: 20
+
