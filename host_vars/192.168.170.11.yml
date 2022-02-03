@@ -8,6 +8,7 @@ vlans:
     desc: VLAN-40
     ip_address: 10.0.40.0/24
   - id: e0/1
+    desc: Connect DIST-2  to DIST-1
     ip_address: 10.0.0.2/24
 interfaces_trunk:
   - name: e0/2

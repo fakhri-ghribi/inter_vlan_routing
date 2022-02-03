@@ -11,23 +11,23 @@
         name: "{{item.desc}}"
         state: present
     - name: Set VLANS IPs
-      delegate_to: dist
       with_items: "{{vlans}}"
       ios_l3_interface:
         name: "{{item.id}}"
         ipv4: "{{item.ip_address}}"
         state: present
+      delegate_to: dist
     - name: Generate config file cfg for distribution switchs
-      delegate_to: dist
       template: src=files/deploy_inter_vlan_dist.j2 dest={{inventory_hostname}}.cfg
-    - name: Deploy inter_vlan routing
       delegate_to: dist
-      ios_config:
-        src: "{{inventory_hostname}}.cfg"
-    - name: Generate config file cfg for access switchs
-      delegate_to: access
-      template: src=files/deploy_vlans_access.j2 dest={{inventory_hostname}}.cfg
     - name: Deploy inter_vlan routing
-      delegate_to: access
       ios_config:
         src: "{{inventory_hostname}}.cfg"
+      delegate_to: dist
+    - name: Generate config file cfg for access switchs
+      template: src=files/deploy_vlans_access.j2 dest={{inventory_hostname}}.cfg
+      delegate_to: access
+    - name: Deploy inter_vlan routing
+      ios_config:
+        src: "{{inventory_hostname}}.cfg"
+      delegate_to: access
