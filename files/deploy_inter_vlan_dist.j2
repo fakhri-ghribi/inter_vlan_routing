@@ -6,6 +6,14 @@
     no shutdown
 {% endfor %} #}
 
+{% for vl in vlans %}
+  interface vlan {{vl['name']}}
+    description {{vl['desc']}}
+    ip address {{vl['ip_address']}}
+    ip ospf {{ospf_process}} area {{ospf_area}}
+    no shutdown
+{% endfor %} #}
+
 {% for int in interfaces_trunk %}
   interface {{int['name']}}
     description {{in['desc']}}
