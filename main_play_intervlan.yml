@@ -15,7 +15,6 @@
       ios_l3_interface:
         name: "{{item.id}}"
         ipv4: "{{item.ip_address}}"
-        state: present
     - name: Generate config file cfg for distribution switchs
       template: src=files/deploy_inter_vlan_dist.j2 dest={{inventory_hostname}}.cfg
     - name: Deploy inter_vlan routing

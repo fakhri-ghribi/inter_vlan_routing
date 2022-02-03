@@ -1,10 +1,11 @@
-{# {% for v in vlans %}
-  vlan {{v['id']}}
-    name {{v['desc']}}
-  interface vlan {{v['id']}}
-    ip address {{v['ip_address']}}
- {% endfor %} #}
-#}
+{% for interface in interfaces %}
+  interface {{interface['name']}}
+    description {{interface['desc']}}
+    ip address {{interface['ip_address']}}
+    ip ospf {{ospf_process}} area {{ospf_area}}
+    no shutdown
+{% endfor %} #}
+
 {% for int in interfaces_trunk %}
   interface {{int['name']}}
     description {{in['desc']}}
