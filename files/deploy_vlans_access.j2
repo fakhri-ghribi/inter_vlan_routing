@@ -1,10 +1,4 @@
-{# {% for v in vlans %}
-  vlan {{v['id']}}
-    name {{v['desc']}}
-  interface vlan {{v['id']}}
-    ip address {{v['ip_address']}}
-{% endfor %}
-#}
+
 {% for int in interfaces_trunk %}
   interface {{int['name']}}
     description {{in['desc']}}
