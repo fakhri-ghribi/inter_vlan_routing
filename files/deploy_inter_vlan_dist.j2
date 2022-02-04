@@ -1,10 +1,10 @@
 {% for interface in interfaces %}
-  interface {{interface['name']}}
-    no switchport
-    description {{interface['desc']}}
-    ip address {{interface['ip_address']}} 
-    ip ospf {{ospf_process}} area {{ospf_area}}
-    no shutdown
+interface {{interface['name']}}
+  no switchport
+  description {{interface['desc']}}
+  ip address {{interface['ip_address']}} 
+  ip ospf {{ospf_process}} area {{ospf_area}}
+  no shutdown
 {% endfor %} 
 
 {% for vl in vlans %}
@@ -23,7 +23,6 @@ interface {{int['name']}}
   {% for vl in {{int['allowed_vlans']}} %}
   switchport trunk allowed vlan add {{vl['id']}}
   {% endfor %}
-!
 {% endfor %}
 
 ip routing
