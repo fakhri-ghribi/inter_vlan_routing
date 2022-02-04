@@ -18,8 +18,9 @@ interface vlan {{vl['id']}}
 {% for int in interfaces_trunk %}
 interface {{int['name']}}
   description {{int['desc']}}
+  switchport trunk encapsulation dotq1
   switchport mode {{int['mode']}}
-  {% for vl in int['allowed_vlans'] %}
+  {% for vl in {{int['allowed_vlans']}} %}
   switchport trunk allowed vlan add {{vl['id']}}
   {% endfor %}
 !

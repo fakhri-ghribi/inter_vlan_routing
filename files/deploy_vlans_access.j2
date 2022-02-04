@@ -3,7 +3,7 @@
   interface {{int['name']}}
   switchport mode {{int['mode']}}
   {% if 'trunk' in int %}
-  {% for vl in int['allowed_vlans'] %}
+  {% for vl in {{int['allowed_vlans']}} %}
   switchport trunk allowed vlan add {{vl['id']}}
   {% endfor %}
   {% else %}
