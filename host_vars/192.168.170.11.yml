@@ -12,15 +12,13 @@ interfaces_trunk:
   - name: e0/2
     desc: interfaces vers access switchs
     mode: trunk
-    allowed_vlans: 
-      - id: 30 
-      - id: 40
   - name: e0/3
     desc: interfaces vers access switchs
     mode: trunk
-    allowed_vlans: 
-      - id: 30 
-      - id: 40
+ 
+allowed_vlans: 
+    - id: 30 
+    - id: 40
 interfaces:
   - name: e0/1
     desc: Connect DIST-2 to DIST-1
