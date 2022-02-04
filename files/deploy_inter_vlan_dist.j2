@@ -29,4 +29,5 @@ router ospf {{ospf_process}}
   router-id {{router_id}}
   {% for net in net_ospf %}
     network {{net['net']}} {{net['wildcard']}} area {{ospf_area}}
+  {% endfor %}
     
