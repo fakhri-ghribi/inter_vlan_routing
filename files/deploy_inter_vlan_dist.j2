@@ -7,7 +7,7 @@
 {% endfor %} 
 
 {% for vl in vlans %}
-  interface vlan {{vl['id']}}
+interface vlan {{vl['id']}}
   description {{vl['desc']}}
   ip address {{vl['ip_address']}}
   ip ospf {{ospf_process}} area {{ospf_area}}
@@ -15,7 +15,7 @@
 {% endfor %} 
 
 {% for int in interfaces_trunk %}
-  interface {{int['name']}}
+interface {{int['name']}}
   description {{int['desc']}}
   switchport mode {{int['mode']}}
   {% for vl in int['allowed_vlans'] %}
