@@ -9,10 +9,9 @@ vlans:
 interfaces_trunk:
   - name: e0/2
     mode: trunk
-    allowed_vlans: 
-      - id: 30  
-      - id: 40
-      
+
+
+
 interfaces_access:
   - name: e1/1
     mode: access
