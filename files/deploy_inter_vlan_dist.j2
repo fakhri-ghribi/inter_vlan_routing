@@ -8,19 +8,19 @@
 
 {% for vl in vlans %}
   interface vlan {{vl['id']}}
-    description {{vl['desc']}}
-    ip address {{vl['ip_address']}}
-    ip ospf {{ospf_process}} area {{ospf_area}}
-    no shutdown
+  description {{vl['desc']}}
+  ip address {{vl['ip_address']}}
+  ip ospf {{ospf_process}} area {{ospf_area}}
+  no shutdown
 {% endfor %} 
 
 {% for int in interfaces_trunk %}
   interface {{int['name']}}
-    description {{int['desc']}}
-    switchport mode {{int['mode']}}
-    {% for vl in int['allowed_vlans'] %}
-      switchport trunk allowed vlan add {{vl['id']}}
-    {% endfor %}
+  description {{int['desc']}}
+  switchport mode {{int['mode']}}
+  {% for vl in int['allowed_vlans'] %}
+  switchport trunk allowed vlan add {{vl['id']}}
+  {% endfor %}
 !
 {% endfor %}
 
@@ -28,6 +28,6 @@ ip routing
 router ospf {{ospf_process}}
   router-id {{router_id}}
   {% for net in net_ospf %}
-    network {{net['net']}} {{net['wildcard']}} area {{ospf_area}}
+  network {{net['net']}} {{net['wildcard']}} area {{ospf_area}}
   {% endfor %}
     
