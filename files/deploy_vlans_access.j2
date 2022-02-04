@@ -2,13 +2,13 @@
 {% for int in interfaces %}
 interface {{int['name']}}
   {% if 'trunk' in int %}
-    switchport trunk encapsulation dotq1
-    switchport mode {{int['mode']}}
-    {% for vl in lookup('vars', 'int' + item.allowed_vlans) %}
-    switchport trunk allowed vlan add {{vl['id']}}
-    {% endfor %}
+  switchport trunk encapsulation dotq1
+  switchport mode {{int['mode']}}
+  {% for vl in lookup('vars', 'int' + int['allowed_vlans']) %}
+  switchport trunk allowed vlan add {{vl['id']}}
+  {% endfor %}
   {% else %}
-    switchport mode {{int['mode']}}
-    switchport access vlan {{int['allowed_vlans']}}
+  switchport mode {{int['mode']}}
+  switchport access vlan {{int['allowed_vlans']}}
   {% endif %}
 {% endfor %}
