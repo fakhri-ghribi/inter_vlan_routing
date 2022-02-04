@@ -6,16 +6,18 @@ vlans:
   - id: 40
     desc: VLAN-40
 
-interfaces:
+interfaces_trunk:
   - name: e0/2
     mode: trunk
     allowed_vlans: 
       - id: 30  
       - id: 40
-  - name: e0/4
+      
+interfaces_access:
+  - name: e1/1
     mode: access
     allowed_vlans: 30
-  - name: e0/5
+  - name: e1/2
     mode: access
     allowed_vlans: 40
 
