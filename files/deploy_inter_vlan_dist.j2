@@ -16,7 +16,7 @@
 
 {% for int in interfaces_trunk %}
   interface {{int['name']}}
-    description {{in['desc']}}
+    description {{int['desc']}}
     switchport mode {{int['mode']}}
     {% for vl in int['allowed_vlans'] %}
       switchport trunk allowed vlan add {{vl['id']}}
