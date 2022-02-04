@@ -7,6 +7,6 @@ interface {{int['name']}}
     switchport trunk allowed vlan add {{vl['id']}}
     {% endfor %}
   {% else %}
-    switchport access vlan {{vl['id']}}
+    switchport access vlan {{int['allowed_vlans']}}
   {% endif %}
 {% endfor %}
