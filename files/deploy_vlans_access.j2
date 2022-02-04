@@ -3,6 +3,7 @@
 interface {{int['name']}}
   switchport mode {{int['mode']}}
   {% if 'trunk' in int %}
+    switchport trunk encapsulation dotq1
     {% for vl in lookup('vars', 'int' + item.allowed_vlans) %}
     switchport trunk allowed vlan add {{vl['id']}}
     {% endfor %}
