@@ -3,10 +3,10 @@
 vlans:
   - id: 10
     desc: VLAN-10
-    ip_address: 10.0.10.0 255.255.255.0
+    ip_address: 10.0.10.1 255.255.255.0
   - id: 20
     desc: VLAN-20
-    ip_address: 10.0.20.0 255.255.255.0
+    ip_address: 10.0.20.1 255.255.255.0
     
 interfaces_trunk:
   - name: e0/2
