@@ -1,7 +1,8 @@
 {% for interface in interfaces %}
   interface {{interface['name']}}
+    no switchport
     description {{interface['desc']}}
-    ip address {{interface['ip_address']}}
+    ip address {{interface['ip_address']}} 
     ip ospf {{ospf_process}} area {{ospf_area}}
     no shutdown
 {% endfor %} 

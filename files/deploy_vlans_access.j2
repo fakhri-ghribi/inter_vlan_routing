@@ -1,7 +1,7 @@
 
 {% for int in interfaces %}
   interface {{int['name']}}
-  description {{in['desc']}}
+  description {{int['desc']}}
   switchport mode {{int['mode']}}
   {% if 'trunk' in int %}
   {% for vl in int['allowed_vlans'] %}
